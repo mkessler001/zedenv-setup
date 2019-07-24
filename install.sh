@@ -73,7 +73,6 @@ update-grub
 
 # Install the UEFI bootloader
 
-grub-install /dev/disk/by-id/$DISK
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=zedenv --recheck --no-floppy
 
 # Install zedenv
