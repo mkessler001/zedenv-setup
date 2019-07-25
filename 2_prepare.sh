@@ -104,8 +104,10 @@ mount -t zfs bpool/boot/grub  /mnt/boot/grub
 zfs create -o setuid=off                      rpool/home
 zfs create -o mountpoint=/root                rpool/home/root
 zfs create                                    rpool/opt
-zfs create -o com.sun:auto-snapshot=false     rpool/var/cache
-zfs create -o com.sun:auto-snapshot=false     rpool/var/lib/docker
+
+zfs create -o mountpoint=/var/cache      -o com.sun:auto-snapshot=false                       rpool/var/cache
+zfs create -o mountpoint=/var/lib/docker -o com.sun:auto-snapshot=false                       rpool/var/lib/docker
+
 
 zfs create -o mountpoint=legacy -o canmount=noauto -o acltype=posixacl -o xattr=sa            rpool/var/log
 zfs create -o mountpoint=legacy -o canmount=noauto                                            rpool/var/spool

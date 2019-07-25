@@ -27,7 +27,7 @@ dpkg-reconfigure --frontend noninteractive tzdata
 # ZFS support
 
 apt install -y cryptsetup dosfstools git python3-setuptools vim
-apt install -y --no-install-recommends linux-image-generic zfs-initramfs zfs-zed
+apt install -y --no-install-recommends linux-image-generic linux-headers-generic zfs-initramfs zfs-zed
 
 # Encryption support
 
@@ -53,7 +53,7 @@ mkdosfs -F 32 -n EFI /dev/disk/by-id/$DISK-part1
 mkdir -p /boot/efi
 mount /dev/disk/by-id/$DISK-part1 /boot/efi
 
-apt install -y grub-efi-amd64-signed shim-signed
+apt install -y grub-efi-amd64
 
 # Refresh the ramdisk files.
 
@@ -81,9 +81,9 @@ git clone https://github.com/johnramsden/pyzfscmds.git
 git clone https://github.com/mkessler001/zedenv.git
 git clone https://github.com/mkessler001/zedenv-grub.git
 
-cd pyzfscmds                                                  && python3.6 setup.py install && cd ..
-cd zedenv      && git checkout feature-support_extra_bpool-20 && python3.6 setup.py install && cd ..
-cd zedenv-grub && git checkout feature-support_extra_bpool    && python3.6 setup.py install && cd ..
+cd pyzfscmds                                                  && python3 setup.py install && cd ..
+cd zedenv      && git checkout feature-support_extra_bpool-20 && python3 setup.py install && cd ..
+cd zedenv-grub && git checkout feature-support_extra_bpool    && python3 setup.py install && cd ..
 
 # zedenv configuration
 
