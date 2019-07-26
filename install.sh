@@ -72,8 +72,9 @@ GRUB_TERMINAL=console
 update-grub
 
 # Install the UEFI bootloader
-
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=zedenv --recheck --no-floppy
+# UEFI must be installed at least once to the DISK itself in order to load `boot/grub/grub.cfg` automatically.
+grub-install /dev/disk/by-id/$DISK
+grub-install --target=x85_64-efi --efi-directory=/boot/efi --bootloader-id=zedenv --recheck --no-floppy
 
 # Install zedenv
 
